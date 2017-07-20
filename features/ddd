@@ -1,0 +1,25 @@
+Scenario: Click 'My Tasks' button on the navigation bar to see list of tasks created
+  When user clicks on the 'My Tasks' button
+  Then the user is able to view list of tasks that he or she has created in the past.
+
+Scenario: User should see a message on the top part saying that list belongs to the logged user
+  When user is on the 'My Tasks' page
+  Then user must see a message saying that list belongs to user
+
+Scenario: User should not be able to add new tasks when task name is less than 3 characters
+  Given user is on the 'My Tasks' page
+  When user types tasks name that is less than 3 characters
+  And user hits enter or clicks on the add task button
+  Then task is not added on the Todo list
+
+Scenario: User should not be able to add new tasks when task name is more than 250 characters
+  Given user is already on the 'My Tasks' page
+  When user types tasks name that is more than 250 characters
+  And user hits enter or clicks on the add task button
+  Then task is not added on the Todo list
+
+Scenario: User should be able to add new tasks when task name is more than 3 characters and less than 250 characters
+  Given user is already on the 'My Tasks' page
+  When user types tasks name that is more than 3 characters and less than 250 characters
+  And user hits enter or clicks on the add task button
+  Then task is added on the Todo list
